@@ -18,7 +18,7 @@ const buttonVariants = Object.freeze({
     text: 'text-[#008B8C]',
   }),
   completed: Object.freeze({
-    box: 'bg-white border-[2px] border-[#FFCCE4]',
+    box: 'bg-white border-[2px] border-[#FFCCE4] ',
     text: 'text-[#313233]',
   }),
 });
