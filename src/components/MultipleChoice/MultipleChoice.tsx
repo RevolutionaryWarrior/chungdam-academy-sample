@@ -1,3 +1,5 @@
+import { useProgressStore } from '@/store';
+
 const DATA = {
   question: 'Q. 빈칸에 들어갈 가장 적절한 단어 쌍을 고르세요.',
   innerContents: [
@@ -14,6 +16,11 @@ const DATA = {
 };
 
 export default function MultipleChoice() {
+  const { increaseProgress } = useProgressStore();
+
+  const onClickNext = () => {
+    increaseProgress();
+  };
   return (
     <div className="flex h-[100%] w-full flex-col items-center justify-center">
       <div
@@ -47,7 +54,7 @@ export default function MultipleChoice() {
           {DATA.choice.map((item, index) => (
             <li
               key={`choice-${index}`}
-              className="flex items-center gap-2.5 rounded-[20px] border border-[#E1E2E5] p-3"
+              className="flex cursor-pointer items-center gap-2.5 rounded-[20px] border border-[#E1E2E5] p-3 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
             >
               <p className="rounded-[12px] bg-[#F0F0F2] px-3 py-[7px] text-[18px] font-[600] text-[#4B4B4D]">
                 a
@@ -59,8 +66,11 @@ export default function MultipleChoice() {
           ))}
         </ul>
       </div>
-      <button className="my-3 mt-7 w-[223px] cursor-pointer rounded-[20px] bg-[#08191A] px-5 py-3 text-[20px] font-[500] text-[#DDF0F0]">
-        Next
+      <button
+        onClick={onClickNext}
+        className="my-3 mt-7 w-[223px] cursor-pointer rounded-[20px] bg-[#08191A] px-5 py-3 text-[20px] font-[500] text-[#DDF0F0] transition-all duration-300 hover:scale-105 hover:bg-[#0A1F20] hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
+      >
+        <span>Next</span>
       </button>
     </div>
   );
