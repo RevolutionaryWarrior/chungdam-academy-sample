@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Header({ title = "Vocabulary Map", max = 2 }: Props) {
-  const resetToOne = useProgressStore((progress) => progress.resetToOne);
+  const { progress, resetToOne } = useProgressStore();
 
   const onClickClose = () => {
     resetToOne();
@@ -22,7 +22,7 @@ export default function Header({ title = "Vocabulary Map", max = 2 }: Props) {
           <span className="flex gap-2 items-center rounded-[99px] border border-[#E1E2E5] px-3 py-1 text-[18px] text-[#4B4B4D] bg-[#F7F8FA]">
             Unit 0
             <ChevronRightIcon width={20} height={20} />
-            Activity 1 of 2
+            Activity {progress} of {max}
           </span>
         </div>
 
