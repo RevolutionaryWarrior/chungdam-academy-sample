@@ -44,7 +44,7 @@ export default function Synonyms({
   onSubmitAnswer,
 }: Props) {
   return (
-    <div className="absolute -top-40 -left-120 flex w-100 flex-col items-center gap-3">
+    <div className="absolute -top-40 -left-120 z-10 flex w-100 flex-col items-center gap-3">
       <Tooltip position="bottom-center" isVisible={showTooltip}>
         <p className="text-[14px]">클릭하여 잠금을 해제하세요</p>
       </Tooltip>

@@ -27,12 +27,12 @@ export default function WordPartners({
   onSubmitAnswer,
 }: Props) {
   return (
-    <div className="absolute -bottom-30 -left-120 flex w-100 flex-col items-center gap-3">
+    <div className="absolute -bottom-30 -left-120 z-10 flex w-100 flex-col items-center gap-3">
       <Tooltip position="bottom-center" isVisible={showTooltip}>
         <p className="text-[14px]">클릭하여 잠금을 해제하세요</p>
       </Tooltip>
 
-      {isActive && showTooltip && (
+      {isActive && (
         <Tooltip position="top-center" bgColor="#ffffff" isVisible={true}>
           <MissionContents
             question={DATA.wordPartners.mission.qustion}

@@ -3,3 +3,45 @@
 @theme {
   --font-pretendard: 'Pretendard';
 }
+
+@keyframes drawLine {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    height: 180px;
+    opacity: 1;
+  }
+}
+
+@keyframes drawLineHorizontal {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    opacity: 1;
+  }
+}
+
+@keyframes drawLineDiagonal {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    height: 400px;
+    opacity: 1;
+  }
+}
