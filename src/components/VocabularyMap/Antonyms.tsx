@@ -105,7 +105,7 @@ export default function Antonyms({
           {antonymWords.map((word, index) => (
             <div
               key={word}
-              className={`absolute rounded-[16px] border-[2px] border-[#FFA5A5] bg-[#FFD7D7] px-4 py-1 text-[22px] font-[500] text-[#E50E0E] ${
+              className={`absolute rounded-[16px] border-[2px] border-[#FAA8A5] bg-[#FAD8D7] px-4 py-1 text-[22px] font-[500] text-[#EB1E17] ${
                 index === 0
                   ? '-top-50 left-16'
                   : index === 1
