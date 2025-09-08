@@ -1,10 +1,10 @@
-import { LockButton } from '@/components';
+import { VocabularyMap } from '@/components';
 import './App.css';
 
 function App() {
   return (
     <main className="font-pretendard">
-      <LockButton isCompleted={false} title="Antonyms" />
+      <VocabularyMap />
     </main>
   );
 }
