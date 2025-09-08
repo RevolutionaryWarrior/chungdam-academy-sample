@@ -41,7 +41,7 @@ export default function LockButton({
   return (
     <button
       {...props}
-      className={`${variant.box} flex cursor-pointer items-center gap-2 rounded-[20px] px-5 py-3`}
+      className={`${variant.box} relative z-10 flex cursor-pointer items-center gap-2 rounded-[20px] px-5 py-3`}
     >
       <div className="relative px-1">
         <div
