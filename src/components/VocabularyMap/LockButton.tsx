@@ -39,14 +39,23 @@ export default function LockButton({
   const variant = buttonVariants[getVariant()];
 
   return (
-    <>
-      <button
-        {...props}
-        className={`${variant.box} flex cursor-pointer items-center gap-2 rounded-[20px] px-5 py-3`}
-      >
-        <div className="px-1">{isCompleted ? <Check /> : <Key />}</div>
-        <p className={`${variant.text} text-[28px] font-[500]`}>{title}</p>
-      </button>
-    </>
+    <button
+      {...props}
+      className={`${variant.box} flex cursor-pointer items-center gap-2 rounded-[20px] px-5 py-3`}
+    >
+      <div className="relative px-1">
+        <div
+          className={`${isCompleted ? 'scale-0 rotate-180 opacity-0' : 'scale-100 rotate-0 opacity-100'} transition-all duration-500`}
+        >
+          <Key />
+        </div>
+        <div
+          className={`${isCompleted ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-180 opacity-0'} absolute inset-0 transition-all delay-200 duration-500`}
+        >
+          <Check />
+        </div>
+      </div>
+      <p className={`${variant.text} text-[28px] font-[500]`}>{title}</p>
+    </button>
   );
 }

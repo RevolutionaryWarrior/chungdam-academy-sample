@@ -8,7 +8,7 @@ type Props = {
   max?: number;
 };
 
-export default function Header({ title = 'Vocabulary Map', max = 2 }: Props) {
+export default function Header({ title, max = 2 }: Props) {
   const { progress, resetToOne } = useProgressStore();
 
   const onClickClose = () => {
@@ -20,7 +20,7 @@ export default function Header({ title = 'Vocabulary Map', max = 2 }: Props) {
       <div className="flex items-center justify-between gap-3 px-10 py-3">
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-2 rounded-[99px] border border-[#E1E2E5] bg-[#F7F8FA] px-3 py-1 text-[18px] text-[#4B4B4D]">
-            Unit 0
+            Unit 1
             <ChevronRightIcon width={20} height={20} />
             Activity {progress} of {max}
           </span>
