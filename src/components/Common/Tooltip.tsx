@@ -14,6 +14,7 @@ type Props = {
   position?: TooltipPosition;
   bgColor?: string;
   isVisible?: boolean;
+  className?: string;
 };
 
 export default function Tooltip({
@@ -21,6 +22,7 @@ export default function Tooltip({
   position = 'top-center',
   bgColor = '#00BABB',
   isVisible = true,
+  className,
 }: Props) {
   const isPrimary = bgColor === '#00BABB';
   const { ref, isOpen, setIsOpen } = useDetectClose();
@@ -35,19 +37,16 @@ export default function Tooltip({
 
   const borderRadius = isPrimary ? '8px' : '24px';
   const textColor = isPrimary ? 'white' : 'black';
-  const spacing = isPrimary
-    ? position.startsWith('top')
-      ? 'mt-[18px]'
-      : 'mb-[18px]'
-    : position.startsWith('top')
-      ? 'mt-[22px]'
-      : 'mb-[22px]';
+
   const paddingClass = isPrimary ? 'px-[10px] py-[6px]' : 'px-6 py-5';
 
-  if (!shouldShow) return null;
-
   return (
-    <div ref={ref} className={`absolute inline-flex h-auto w-auto ${spacing}`}>
+    <div
+      ref={ref}
+      className={`inline-flex h-auto w-auto transition-opacity duration-300 ${
+        shouldShow ? 'visible' : 'invisible'
+      } ${className}`}
+    >
       <div
         className={`relative ${paddingClass}`}
         style={{
