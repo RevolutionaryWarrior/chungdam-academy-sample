@@ -1,11 +1,11 @@
-import "./App.css";
-import Header from "./components/Common/Header";
+import { VocabularyMap } from '@/components';
+import './App.css';
 
 function App() {
   return (
-    <div className="min-w-[750px] mx-auto">
-      <Header title="Vocabulary Map" max={2} />
-    </div>
+    <main className="font-pretendard min-w-[750px]">
+      <VocabularyMap />
+    </main>
   );
 }
 
