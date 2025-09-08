@@ -38,7 +38,6 @@ export default function LockButton({
 
   const variant = buttonVariants[getVariant()];
 
-  console.log(variant);
   return (
     <button
       {...props}

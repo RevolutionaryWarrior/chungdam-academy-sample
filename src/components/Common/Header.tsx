@@ -1,14 +1,14 @@
-import { useProgressStore } from "@/store";
-import ChevronRightIcon from "@icons/chevron-right.svg?react";
-import CloseIcon from "@icons/x-mark.svg?react";
-import ProgressBar from "./ProgressBar";
+import { useProgressStore } from '@/store';
+import ChevronRightIcon from '@icons/chevron-right.svg?react';
+import CloseIcon from '@icons/x-mark.svg?react';
+import ProgressBar from './ProgressBar';
 
 type Props = {
   title?: string;
   max?: number;
 };
 
-export default function Header({ title = "Vocabulary Map", max = 2 }: Props) {
+export default function Header({ title = 'Vocabulary Map', max = 2 }: Props) {
   const { progress, resetToOne } = useProgressStore();
 
   const onClickClose = () => {
@@ -16,10 +16,10 @@ export default function Header({ title = "Vocabulary Map", max = 2 }: Props) {
   };
 
   return (
-    <header className="w-full ">
-      <div className="flex items-center justify-between gap-3 py-3 px-10">
-        <div className="flex items-center gap-2 ">
-          <span className="flex gap-2 items-center rounded-[99px] border border-[#E1E2E5] px-3 py-1 text-[18px] text-[#4B4B4D] bg-[#F7F8FA]">
+    <header className="w-full">
+      <div className="flex items-center justify-between gap-3 px-10 py-3">
+        <div className="flex items-center gap-2">
+          <span className="flex items-center gap-2 rounded-[99px] border border-[#E1E2E5] bg-[#F7F8FA] px-3 py-1 text-[18px] text-[#4B4B4D]">
             Unit 0
             <ChevronRightIcon width={20} height={20} />
             Activity {progress} of {max}
@@ -31,7 +31,7 @@ export default function Header({ title = "Vocabulary Map", max = 2 }: Props) {
         <button
           type="button"
           onClick={onClickClose}
-          className="cursor-pointer flex items-center gap-1 rounded-[99px] border border-[#C8C9CC] px-3 py-1 text-base text-[#4B4B4D] hover:bg-black/5 active:scale-[0.98] transition"
+          className="flex cursor-pointer items-center gap-1 rounded-[99px] border border-[#C8C9CC] px-3 py-1 text-base text-[#4B4B4D] transition hover:bg-black/5 active:scale-[0.98]"
           aria-label="Close"
         >
           Close
