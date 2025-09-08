@@ -30,5 +30,5 @@
       "@images/*": ["src/assets/images/*"]
     }
   },
-  "include": ["src", "src/svg.d.ts"]
+  "include": ["src", "src/svg.d.ts", "global.d.ts"],
 }
