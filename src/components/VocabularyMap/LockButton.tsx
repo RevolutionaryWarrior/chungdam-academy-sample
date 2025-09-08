@@ -1,26 +1,50 @@
-import Check from '@icons/check.svg';
-import Key from '@icons/key.svg';
+import Check from '@icons/check.svg?react';
+import Key from '@icons/key.svg?react';
 
 type Props = {
   isCompleted: boolean;
+  isActive: boolean;
   title: string;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
-export default function LockButton({ isCompleted, title, onClick }: Props) {
+const buttonVariants = Object.freeze({
+  locked: Object.freeze({
+    box: 'bg-[#E6E7EB]',
+    text: 'text-[#666]',
+  }),
+  active: Object.freeze({
+    box: 'bg-[#DDF0F0] border-[2px] border-[#7DD1D1]',
+    text: 'text-[#008B8C]',
+  }),
+  completed: Object.freeze({
+    box: 'bg-white border-[2px] border-[#FFCCE4] ',
+    text: 'text-[#313233]',
+  }),
+});
+
+export default function LockButton({
+  isCompleted,
+  isActive,
+  title,
+  ...props
+}: Props) {
+  const getVariant = () => {
+    if (isActive) return 'active';
+    if (isCompleted) return 'completed';
+
+    return 'locked';
+  };
+
+  const variant = buttonVariants[getVariant()];
+
   return (
     <button
-      onClick={onClick}
-      className={`${isCompleted ? 'border-[2px] border-[#F882BA] bg-white' : 'bg-[#E6E7EB]'} flex cursor-pointer items-center gap-2 rounded-[20px] px-5 py-3`}
+      {...props}
+      className={`${variant.box} flex cursor-pointer items-center gap-2 rounded-[20px] px-5 py-3`}
     >
-      <div className="px-1">
-        <img src={isCompleted ? Check : Key} />
-      </div>
-      <p
-        className={`${isCompleted ? 'text-[#313233]' : 'text-[#666]'} text-[28px] font-[500]`}
-      >
-        {title}
-      </p>
+      <div className="px-1">{isCompleted ? <Check /> : <Key />}</div>
+      <p className={`${variant.text} text-[28px] font-[500]`}>{title}</p>
     </button>
   );
 }
