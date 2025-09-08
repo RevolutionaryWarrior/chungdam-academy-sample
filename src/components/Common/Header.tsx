@@ -1,7 +1,7 @@
-import { useProgressStore } from "../../store/ProgressStore";
+import { useProgressStore } from "@/store";
+import ChevronRightIcon from "@icons/chevron-right.svg?react";
+import CloseIcon from "@icons/x-mark.svg?react";
 import ProgressBar from "./ProgressBar";
-import ChevronRightIcon from "../../assets/icons/chevron-right.svg?react";
-import CloseIcon from "../../assets/icons/x-mark.svg?react";
 
 type Props = {
   title?: string;

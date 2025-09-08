@@ -1,1 +1,3 @@
-export * from "./VocabularyMap";
+export * from './Common';
+export * from './VocabularyMap';
+

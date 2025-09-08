@@ -1,4 +1,4 @@
-import { useProgressStore } from "../../store/ProgressStore";
+import { useProgressStore } from "@/store";
 
 type Props = {
   max?: number;
