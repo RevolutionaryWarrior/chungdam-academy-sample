@@ -18,7 +18,7 @@ const buttonVariants = Object.freeze({
     text: 'text-[#008B8C]',
   }),
   completed: Object.freeze({
-    box: 'bg-white border-[#FFCCE4]',
+    box: 'bg-white border-[2px] border-[#FFCCE4]',
     text: 'text-[#313233]',
   }),
 });
@@ -38,6 +38,7 @@ export default function LockButton({
 
   const variant = buttonVariants[getVariant()];
 
+  console.log(variant);
   return (
     <button
       {...props}

@@ -1,15 +1,22 @@
-import { LockButton } from '@/components';
+import { LockButton, MissionContents } from '@/components';
 import Vector from '@icons/vector.svg?react';
 import { useState } from 'react';
 
-type Turn = 'synonyms' | 'antonyms' | 'wordPartners';
+const KEYWORDS = {
+  SYNONYMS: 'synonyms',
+  ANTONYMS: 'antonyms',
+  WORD_PARTNERS: 'wordPartners',
+} as const;
+
+type Turn = (typeof KEYWORDS)[keyof typeof KEYWORDS];
 
 const DATA = {
   word: 'depression',
   synonyms: {
     mission: {
-      qustion: '`depression`과 가장 유사한 단어는?',
-      choice: ['joy', 'sadness'],
+      qustion: '"depression"과 가장 유사한 단어는?',
+      choice: ['(a) joy', '(b) sadness'],
+      answer: '(b) sadness',
     },
     degree: {
       sadness: {
@@ -30,14 +37,38 @@ const DATA = {
       },
     },
   },
+  antonyms: {
+    mission: {
+      qustion: '"depression"과 반대되는 단어는?',
+      choice: ['(a) happiness', '(b) sadness'],
+      answer: '(b) sadness',
+    },
+    degree: {},
+  },
+  wordPartners: {
+    mission: {
+      qustion: '"depression"과 함께 쓰이는 단어는?',
+      choice: ['(a) deep', '(b) light'],
+      answer: '(b) light',
+    },
+    degree: {},
+  },
 };
 
 export default function VocabularyMap() {
   const [completedWords, setCompletedWords] = useState<Turn[]>([]);
-  const [active, setActive] = useState<Turn>('synonyms');
+  const [active, setActive] = useState<Turn | null>(null);
 
   const onClickButton = (word: Turn) => {
     setActive(word);
+  };
+
+  const onSubmitAnswer = (isCorrect: boolean) => {
+    if (isCorrect && active) {
+      setCompletedWords((prev) => [...prev, active]);
+    }
+
+    setActive(null);
   };
 
   return (
@@ -45,18 +76,26 @@ export default function VocabularyMap() {
       <div className="relative">
         <div className="absolute -top-40 -left-120">
           <LockButton
-            isCompleted={completedWords.includes('synonyms')}
-            isActive={active === 'synonyms'}
+            isCompleted={completedWords.includes(KEYWORDS.SYNONYMS)}
+            isActive={active === KEYWORDS.SYNONYMS}
             title="Synonyms"
-            onClick={() => onClickButton('synonyms')}
+            onClick={() => onClickButton(KEYWORDS.SYNONYMS)}
           />
         </div>
+        {active && (
+          <MissionContents
+            question={DATA[active].mission.qustion}
+            choice={DATA[active].mission.choice}
+            answer={DATA[active].mission.answer}
+            onSubmit={onSubmitAnswer}
+          />
+        )}
         <div className="absolute -top-40 -right-120">
           <LockButton
-            isCompleted={completedWords.includes('antonyms')}
-            isActive={active === 'antonyms'}
+            isCompleted={completedWords.includes(KEYWORDS.ANTONYMS)}
+            isActive={active === KEYWORDS.ANTONYMS}
             title="Antonyms"
-            onClick={() => onClickButton('antonyms')}
+            onClick={() => onClickButton(KEYWORDS.ANTONYMS)}
           />
         </div>
         <div className="relative h-[374px] w-[407px]">
@@ -67,10 +106,10 @@ export default function VocabularyMap() {
         </div>
         <div className="absolute -bottom-30 -left-120">
           <LockButton
-            isCompleted={completedWords.includes('wordPartners')}
-            isActive={active === 'wordPartners'}
+            isCompleted={completedWords.includes(KEYWORDS.WORD_PARTNERS)}
+            isActive={active === KEYWORDS.WORD_PARTNERS}
             title="Word Partners"
-            onClick={() => onClickButton('wordPartners')}
+            onClick={() => onClickButton(KEYWORDS.WORD_PARTNERS)}
           />
         </div>
       </div>
