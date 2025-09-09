@@ -20,11 +20,11 @@ type Props = {
 export default function Tooltip({
   children,
   position = 'top-center',
-  bgColor = '#00BABB',
+  bgColor = '#36B3B1',
   isVisible = true,
   className,
 }: Props) {
-  const isPrimary = bgColor === '#00BABB';
+  const isPrimary = bgColor === '#36B3B1';
   const { ref, isOpen, setIsOpen } = useDetectClose();
 
   // 외부에서 전달된 isVisible 상태와 동기화

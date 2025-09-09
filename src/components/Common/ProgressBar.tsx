@@ -1,4 +1,4 @@
-import { useProgressStore } from "@/store";
+import { useProgressStore } from '@/store';
 
 type Props = {
   max?: number;
@@ -16,7 +16,7 @@ export default function ProgressBar({ max = 8 }: Props) {
         style={{ height: 4, borderRadius: 3 }}
       >
         <div
-          className="bg-black transition-[width] duration-500 ease-out"
+          className="bg-[#00807E] transition-[width] duration-500 ease-out"
           style={{
             width: `${percent}%`,
             height: 4,

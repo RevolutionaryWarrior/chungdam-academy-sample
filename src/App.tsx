@@ -7,7 +7,7 @@ function App() {
   const isMultipleChoice = progress === 1;
 
   return (
-    <main className="font-pretendard h-dvh min-w-[750px] overflow-hidden">
+    <main className="font-pretendard h-dvh min-w-[750px] overflow-hidden bg-[#FAFAFA]">
       <Header title={isMultipleChoice ? 'Nuance Drill' : 'Vocabulary Map'} />
       {isMultipleChoice ? <MultipleChoice /> : <VocabularyMap />}
     </main>
