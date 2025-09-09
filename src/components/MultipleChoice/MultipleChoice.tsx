@@ -1,7 +1,8 @@
 import { useProgressStore } from '@/store';
 
 const DATA = {
-  question: 'Q. 빈칸에 들어갈 가장 적절한 단어 쌍을 고르세요.',
+  questionNumber: 'Q5',
+  question: '빈칸에 들어갈 가장 적절한 단어 쌍을 고르세요.',
   innerContents: [
     'While simple',
     'an be a normal reaction to loss, clinical',
@@ -29,9 +30,14 @@ export default function MultipleChoice() {
           boxShadow: '0 4px 40px 0 rgba(199, 135, 166, 0.18)',
         }}
       >
-        <p className="text-[24px] leading-[36px] font-[600] text-[#313233]">
-          {DATA.question}
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="rounded-[20px] bg-[#0B2626] px-3 py-1.5 text-[20px] leading-[20px] font-[600] text-[#E5F2F2]">
+            {DATA.questionNumber}
+          </p>
+          <p className="text-[24px] leading-[36px] font-[600] text-[#313233]">
+            {DATA.question}
+          </p>
+        </div>
         <div className="mt-[26px] flex max-w-[800px] flex-wrap items-center gap-[6px] rounded-[20px] bg-[#F0F0F2] px-10 py-4">
           {DATA.innerContents.map((item, index) => (
             <>
