@@ -1,5 +1,9 @@
 import { useProgressStore } from '@/store';
+<<<<<<< Updated upstream
 import ChevronRightIcon from '@icons/chevron-right.svg?react';
+=======
+import { useState } from 'react';
+>>>>>>> Stashed changes
 
 const DATA = {
   questionNumber: 'Q5',
@@ -19,6 +23,11 @@ const DATA = {
 
 export default function MultipleChoice() {
   const { increaseProgress } = useProgressStore();
+  const [activeChoice, setActiveChoice] = useState<string | null>(null);
+
+  const onClickChoice = (selectedChoice: string) => {
+    setActiveChoice(selectedChoice);
+  };
 
   const onClickNext = () => {
     increaseProgress();
@@ -60,15 +69,41 @@ export default function MultipleChoice() {
         <ul className="mt-[30px] flex flex-col gap-3">
           {DATA.choice.map((item, index) => {
             const letter = String.fromCharCode(97 + index); // a, b, c, d...
+            const isSelected = activeChoice === item;
+
             return (
               <li
                 key={`choice-${index}`}
-                className="flex cursor-pointer items-center gap-2.5 rounded-[20px] border border-[#E1E2E5] p-3 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
+                onClick={() => onClickChoice(item)}
+                className={`flex cursor-pointer items-center gap-2.5 rounded-[20px] border p-3 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95 ${
+                  isSelected
+                    ? 'border-[#00BABB] bg-[#00BABB]/10'
+                    : 'border-[#E1E2E5] bg-white'
+                }`}
               >
-                <p className="rounded-[12px] bg-[#F0F0F2] px-3 py-[7px] text-[18px] font-[600] text-[#4B4B4D]">
+                <p
+                  className={`rounded-[12px] px-3 py-[7px] text-[18px] font-[600] ${
+                    isSelected
+                      ? 'text-[#19191A]'
+                      : 'bg-[#F0F0F2] text-[#4B4B4D]'
+                  }`}
+                  style={
+                    isSelected
+                      ? {
+                          background:
+                            'radial-gradient(79.06% 85.14% at 37.5% 29.69%, var(--teal-tint02, #CEEBEB) 12.02%, var(--teal-tint01, #99D1D0) 63.46%, var(--main-color, #24B3B1) 92.51%, var(--teal-tint03, #E5F2F2) 100%), radial-gradient(79.06% 85.14% at 37.5% 29.69%, #FFCCE5 12.02%, #FFA3CF 63.46%, #F56CAE 92.51%, #F593C2 100%)',
+                          boxShadow: '0 1px 8px -1px rgba(78, 153, 152, 0.35)',
+                        }
+                      : undefined
+                  }
+                >
                   {letter}
                 </p>
-                <p className="text-[18px] leading-[27px] text-[#4B4B4D]">
+                <p
+                  className={`text-[18px] leading-[27px] ${
+                    isSelected ? 'text-[#00BABB]' : 'text-[#4B4B4D]'
+                  }`}
+                >
                   {item}
                 </p>
               </li>
