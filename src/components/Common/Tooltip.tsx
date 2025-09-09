@@ -20,11 +20,11 @@ type Props = {
 export default function Tooltip({
   children,
   position = 'top-center',
-  bgColor = '#00BABB',
+  bgColor = '#36B3B1',
   isVisible = true,
   className,
 }: Props) {
-  const isPrimary = bgColor === '#00BABB';
+  const isPrimary = bgColor === '#36B3B1';
   const { ref, isOpen, setIsOpen } = useDetectClose();
 
   // 외부에서 전달된 isVisible 상태와 동기화
@@ -40,6 +40,8 @@ export default function Tooltip({
 
   const paddingClass = isPrimary ? 'px-[10px] py-[6px]' : 'px-6 py-5';
 
+  const animationClass = isPrimary && shouldShow ? 'animate-bounce-gentle' : '';
+
   return (
     <div
       ref={ref}
@@ -48,7 +50,7 @@ export default function Tooltip({
       } ${className}`}
     >
       <div
-        className={`relative ${paddingClass}`}
+        className={`relative ${paddingClass} ${animationClass}`}
         style={{
           backgroundColor: bgColor,
           borderRadius,

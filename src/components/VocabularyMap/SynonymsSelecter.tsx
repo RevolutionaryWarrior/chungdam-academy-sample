@@ -81,7 +81,7 @@ export default function SynonymsSelector({
                 onClick={() => handleClick(word)}
                 className={`relative cursor-pointer rounded-2xl px-4 pt-[6px] pb-2 text-[22px] transition-colors ${
                   isActive
-                    ? 'border border-[#7DD1D1] bg-[#00BABB] text-white'
+                    ? 'border border-[#7DD1D1] bg-[#36B3B1] text-white'
                     : 'border border-[#E1E2E5] bg-white text-black'
                 } `}
               >

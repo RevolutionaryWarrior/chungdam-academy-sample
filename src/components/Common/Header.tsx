@@ -39,7 +39,7 @@ export default function Header({ title, max = 2 }: Props) {
         </button>
       </div>
 
-      <div className="">
+      <div>
         <ProgressBar max={max} />
       </div>
     </header>
