@@ -26,7 +26,9 @@ export default function Header({ title, max = 2 }: Props) {
           </span>
         </div>
 
-        <h1 className="text-[24px] font-semibold text-[#313233]">{title}</h1>
+        <h1 className="absolute left-1/2 -translate-x-1/2 text-2xl font-semibold text-[#313233]">
+          {title}
+        </h1>
 
         <button
           type="button"
