@@ -1,6 +1,7 @@
 import { LockButton, MissionContents, Tooltip } from '@/components';
+import { useDetectClose } from '@/hooks';
 import { useCompletedWordsStore } from '@/store';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SynonymsSelector from './SynonymsSelecter';
 
 type WordsType = 'sadness' | 'despair' | 'despondency' | 'misery';
@@ -9,8 +10,8 @@ const DATA = {
   synonyms: {
     mission: {
       qustion: '"depression"과 가장 유사한 단어는?',
-      choice: ['(a) joy', '(b) sadness'],
-      answer: '(b) sadness',
+      choice: ['joy', 'sadness'],
+      answer: 'sadness',
     },
     degree: {
       sadness: {
@@ -36,7 +37,6 @@ const DATA = {
 type Props = {
   isCompleted: boolean;
   isActive: boolean;
-  showTooltip: boolean;
   onClick: () => void;
   onSubmitAnswer: (isCorrect: boolean) => void;
 };
@@ -44,7 +44,6 @@ type Props = {
 export default function Synonyms({
   isCompleted,
   isActive,
-  showTooltip,
   onClick,
   onSubmitAnswer,
 }: Props) {
@@ -57,6 +56,21 @@ export default function Synonyms({
   >(null);
   const [openAnswer, setOpenAnswer] = useState<boolean>(false);
   const canShowMissionContents = completedWords.length === 0;
+  const {
+    ref: missionRef,
+    isOpen: isMissionOpen,
+    setIsOpen: setIsMissionOpen,
+  } = useDetectClose();
+
+  useEffect(() => {
+    if (!openAnswer) {
+      setSelected(null);
+    }
+  }, [openAnswer]);
+
+  useEffect(() => {
+    setIsMissionOpen(isActive && canShowMissionContents);
+  }, [isActive, canShowMissionContents, setIsMissionOpen]);
 
   const handleLockButtonClick = () => {
     if (isCompleted) {
@@ -68,13 +82,16 @@ export default function Synonyms({
 
   return (
     <div className="absolute -top-40 -left-120 z-10 flex w-100 flex-col items-center gap-3">
-      <Tooltip position="bottom-center" isVisible={showTooltip}>
+      <Tooltip
+        position="bottom-center"
+        isVisible={completedWords.length === 0 && !isMissionOpen}
+      >
         <p className="text-[14px]">클릭하여 잠금을 해제하세요</p>
       </Tooltip>
 
       <LockButton
         isCompleted={isCompleted}
-        isActive={isActive}
+        isActive={openAnswer || isMissionOpen}
         title="Synonyms"
         onClick={handleLockButtonClick}
       />
@@ -86,11 +103,10 @@ export default function Synonyms({
           bgColor="#ffffff"
           isVisible={openAnswer}
           className="absolute top-33 left-25"
-          disableOutsideClick
         >
           <SynonymsSelector
             selected={selected}
-            onSelect={(word: WordsType) => setSelected(word)}
+            onSelect={(word: WordsType | null) => setSelected(word)}
             degree={DATA.synonyms.degree}
             isVisible={openAnswer}
           />
@@ -166,13 +182,19 @@ export default function Synonyms({
       )}
 
       {isActive && canShowMissionContents && (
-        <Tooltip position="top-center" bgColor="#ffffff" isVisible={true}>
-          <MissionContents
-            question={DATA.synonyms.mission.qustion}
-            choice={DATA.synonyms.mission.choice}
-            answer={DATA.synonyms.mission.answer}
-            onSubmit={onSubmitAnswer}
-          />
+        <Tooltip
+          position="top-center"
+          bgColor="#ffffff"
+          isVisible={isMissionOpen}
+        >
+          <div ref={missionRef}>
+            <MissionContents
+              question={DATA.synonyms.mission.qustion}
+              choice={DATA.synonyms.mission.choice}
+              answer={DATA.synonyms.mission.answer}
+              onSubmit={onSubmitAnswer}
+            />
+          </div>
         </Tooltip>
       )}
     </div>
