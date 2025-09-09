@@ -9,8 +9,8 @@ const DATA = {
   synonyms: {
     mission: {
       qustion: '"depression"과 가장 유사한 단어는?',
-      choice: ['(a) joy', '(b) sadness'],
-      answer: '(b) sadness',
+      choice: ['joy', 'sadness'],
+      answer: 'sadness',
     },
     degree: {
       sadness: {

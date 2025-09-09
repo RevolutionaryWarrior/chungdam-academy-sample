@@ -5,8 +5,8 @@ const DATA = {
   antonyms: {
     mission: {
       qustion: '"depression"과 반대되는 단어는?',
-      choice: ['(a) happiness', '(b) sadness'],
-      answer: '(a) happiness',
+      choice: ['happiness', 'sadness'],
+      answer: 'happiness',
     },
     degree: {
       happiness: {
