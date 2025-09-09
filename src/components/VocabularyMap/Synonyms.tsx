@@ -93,7 +93,7 @@ export default function Synonyms({
           className="absolute top-33 left-25"
         >
           <SynonymsSelector
-            selected={selected ?? 'despair'}
+            selected={selected}
             onSelect={(word: WordsType) => setSelected(word)}
             degree={DATA.synonyms.degree}
             isVisible={openAnswer}
@@ -102,7 +102,7 @@ export default function Synonyms({
       )}
 
       {/* 문제 보기 */}
-      {isCompleted && (
+      {completedWords.length === 3 && (
         <div className="relative">
           {synonymWords.map((word, index) => {
             const lineConfigs = [

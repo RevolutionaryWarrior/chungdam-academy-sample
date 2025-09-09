@@ -63,7 +63,7 @@ export default function Antonyms({
         onClick={onClick}
       />
 
-      {isCompleted && (
+      {completedWords.length === 3 && (
         <div className="relative">
           {antonymWords.map((word, index) => {
             const lineConfigs = [
@@ -131,7 +131,7 @@ export default function Antonyms({
       )}
 
       {isActive && canShowMissionContents && (
-        <Tooltip position="bottom-center" bgColor="#ffffff" isVisible={true}>
+        <Tooltip position="top-center" bgColor="#ffffff" isVisible={true}>
           <MissionContents
             question={DATA.antonyms.mission.qustion}
             choice={DATA.antonyms.mission.choice}

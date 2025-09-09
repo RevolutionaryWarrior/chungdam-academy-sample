@@ -18,11 +18,12 @@ export default function Toggle({ options, value, onChange }: Props) {
           <button
             key={option.value}
             onClick={() => onChange(option.value)}
-            className={`flex-1 rounded-full px-4 py-1 text-[14px] font-medium transition-colors ${
-              isActive
-                ? 'bg-white text-black shadow-sm'
-                : 'bg-transparent text-gray-500'
+            className={`flex-1 cursor-pointer rounded-full px-4 py-1 text-[14px] font-medium transition-colors ${
+              isActive ? 'bg-white text-black' : 'bg-transparent text-gray-500'
             }`}
+            style={
+              isActive ? { boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.12)' } : {}
+            }
           >
             {option.label}
           </button>

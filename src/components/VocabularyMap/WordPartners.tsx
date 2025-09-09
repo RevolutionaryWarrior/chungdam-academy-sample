@@ -54,7 +54,7 @@ export default function WordPartners({
         <p className="text-[14px]">클릭하여 잠금을 해제하세요</p>
       </Tooltip>
 
-      {isCompleted && (
+      {completedWords.length === 3 && (
         <div className="relative">
           {wordPartnerWords.map((word, index) => {
             const lineConfigs = [
