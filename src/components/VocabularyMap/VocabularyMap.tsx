@@ -1,4 +1,5 @@
 import { Antonyms, Synonyms, WordPartners } from '@/components';
+import { useCompletedWordsStore } from '@/store';
 import Vector from '@icons/vector.svg?react';
 import { useState } from 'react';
 
@@ -22,7 +23,8 @@ const LINE_ANIMATION_SETTING = {
 const WORD = 'depression';
 
 export default function VocabularyMap() {
-  const [completedWords, setCompletedWords] = useState<Turn[]>([]);
+  const { completedWords, addCompletedWord, isCompleted } =
+    useCompletedWordsStore();
   const [active, setActive] = useState<Turn | null>(null);
 
   const onClickButton = (word: Turn) => {
@@ -31,7 +33,7 @@ export default function VocabularyMap() {
 
   const onSubmitAnswer = (isCorrect: boolean) => {
     if (isCorrect && active) {
-      setCompletedWords((prev) => [...prev, active]);
+      addCompletedWord(active);
     }
 
     setActive(null);
@@ -45,7 +47,7 @@ export default function VocabularyMap() {
     <div className="flex h-[100%] w-full items-center justify-center">
       <div className="relative">
         <Synonyms
-          isCompleted={completedWords.includes(KEYWORDS.SYNONYMS)}
+          isCompleted={isCompleted(KEYWORDS.SYNONYMS)}
           isActive={active === KEYWORDS.SYNONYMS}
           showTooltip={showTooltipForSynonyms}
           onClick={() => onClickButton(KEYWORDS.SYNONYMS)}
@@ -53,7 +55,7 @@ export default function VocabularyMap() {
         />
 
         <Antonyms
-          isCompleted={completedWords.includes(KEYWORDS.ANTONYMS)}
+          isCompleted={isCompleted(KEYWORDS.ANTONYMS)}
           isActive={active === KEYWORDS.ANTONYMS && !showTooltipForAntonyms}
           showTooltip={showTooltipForAntonyms}
           onClick={() => onClickButton(KEYWORDS.ANTONYMS)}
@@ -98,7 +100,7 @@ export default function VocabularyMap() {
         </div>
 
         <WordPartners
-          isCompleted={completedWords.includes(KEYWORDS.WORD_PARTNERS)}
+          isCompleted={isCompleted(KEYWORDS.WORD_PARTNERS)}
           isActive={
             active === KEYWORDS.WORD_PARTNERS && !showTooltipForWordPartners
           }
