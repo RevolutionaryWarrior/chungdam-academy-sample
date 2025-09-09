@@ -1,4 +1,5 @@
 import { LockButton, MissionContents, Tooltip } from '@/components';
+import { useCompletedWordsStore } from '@/store';
 
 const DATA = {
   antonyms: {
@@ -43,6 +44,10 @@ export default function Antonyms({
   onClick,
   onSubmitAnswer,
 }: Props) {
+  const completedWords = useCompletedWordsStore(
+    (state) => state.completedWords,
+  );
+  const canShowMissionContents = completedWords.length === 1;
   const antonymWords = Object.keys(DATA.antonyms.degree);
 
   return (
@@ -125,7 +130,7 @@ export default function Antonyms({
         </div>
       )}
 
-      {isActive && (
+      {isActive && canShowMissionContents && (
         <Tooltip position="bottom-center" bgColor="#ffffff" isVisible={true}>
           <MissionContents
             question={DATA.antonyms.mission.qustion}

@@ -1,4 +1,5 @@
 import { LockButton, MissionContents, Tooltip } from '@/components';
+import { useCompletedWordsStore } from '@/store';
 
 const DATA = {
   wordPartners: {
@@ -39,6 +40,12 @@ export default function WordPartners({
   onClick,
   onSubmitAnswer,
 }: Props) {
+  const completedWords = useCompletedWordsStore(
+    (state) => state.completedWords,
+  );
+
+  const canShowMissionContents = completedWords.length === 2;
+
   const wordPartnerWords = Object.keys(DATA.wordPartners.degree);
 
   return (
@@ -108,7 +115,7 @@ export default function WordPartners({
         </div>
       )}
 
-      {isActive && (
+      {isActive && canShowMissionContents && (
         <Tooltip position="top-center" bgColor="#ffffff" isVisible={true}>
           <MissionContents
             question={DATA.wordPartners.mission.qustion}
