@@ -1,7 +1,7 @@
 import { Antonyms, Synonyms, WordPartners } from '@/components';
 import { useCompletedWordsStore } from '@/store';
-import Vector from '@icons/vector.svg?react';
 import { useState } from 'react';
+import Vector from '../../assets/icons/vector.svg?react';
 
 const KEYWORDS = Object.freeze({
   SYNONYMS: 'synonyms',
