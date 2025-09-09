@@ -1,4 +1,5 @@
 import { useProgressStore } from '@/store';
+import ChevronRightIcon from '@icons/chevron-right.svg?react';
 
 const DATA = {
   questionNumber: 'Q5',
@@ -25,7 +26,7 @@ export default function MultipleChoice() {
   return (
     <div className="flex h-[100%] w-full flex-col items-center justify-center">
       <div
-        className="h-[726px] w-[1000px] rounded-[32px] px-[100px] pt-11"
+        className="max-h-[726px] w-[1000px] rounded-[32px] px-[100px] py-11"
         style={{
           boxShadow: '0 4px 40px 0 rgba(199, 135, 166, 0.18)',
         }}
@@ -74,9 +75,10 @@ export default function MultipleChoice() {
       </div>
       <button
         onClick={onClickNext}
-        className="my-3 mt-7 w-[223px] cursor-pointer rounded-[20px] bg-[#08191A] px-5 py-3 text-[20px] font-[500] text-[#DDF0F0] transition-all duration-300 hover:scale-105 hover:bg-[#0A1F20] hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
+        className="mt-7 flex w-[223px] cursor-pointer items-center justify-center gap-1 rounded-[20px] bg-[#24B3B1] px-5 py-3 text-[20px] font-[500] text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
       >
         <span>Next</span>
+        <ChevronRightIcon className="relative bottom-[1px] size-6 fill-white" />
       </button>
     </div>
   );
