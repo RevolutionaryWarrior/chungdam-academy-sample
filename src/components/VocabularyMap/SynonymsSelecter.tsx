@@ -13,7 +13,7 @@ type DegreeData = {
 };
 
 interface Props {
-  selected: WordsType;
+  selected: WordsType | null;
   onSelect: (word: WordsType) => void;
   degree: DegreeData;
   isVisible?: boolean;
@@ -27,7 +27,7 @@ export default function SynonymsSelector({
   degree,
   isVisible = true,
 }: Props) {
-  const [openModal, setOpenModal] = useState<WordsType | null>(selected);
+  const [openModal, setOpenModal] = useState<WordsType | null>(null);
 
   const [tab, setTab] = useState<'commentary' | 'example'>('commentary');
 
@@ -55,17 +55,19 @@ export default function SynonymsSelector({
         </div>
 
         {/* indicator */}
-        <img
-          src={indicator}
-          alt="indicator"
-          className={`absolute top-0 h-5 w-5 ${
-            isVisible ? 'transition-[left] duration-300 ease-in-out' : ''
-          }`}
-          style={{
-            left: positionMap[selected],
-            transform: 'translateX(-50%)',
-          }}
-        />
+        {selected && (
+          <img
+            src={indicator}
+            alt="indicator"
+            className={`absolute top-0 h-5 w-5 ${
+              isVisible ? 'transition-[left] duration-300 ease-in-out' : ''
+            }`}
+            style={{
+              left: positionMap[selected],
+              transform: 'translateX(-50%)',
+            }}
+          />
+        )}
       </div>
 
       {/* buttons */}
@@ -77,7 +79,7 @@ export default function SynonymsSelector({
             <div key={word} className="relative flex flex-col items-center">
               <button
                 onClick={() => handleClick(word)}
-                className={`relative rounded-2xl px-4 pt-[6px] pb-2 text-[22px] transition-colors ${
+                className={`relative cursor-pointer rounded-2xl px-4 pt-[6px] pb-2 text-[22px] transition-colors ${
                   isActive
                     ? 'border border-[#7DD1D1] bg-[#00BABB] text-white'
                     : 'border border-[#E1E2E5] bg-white text-black'

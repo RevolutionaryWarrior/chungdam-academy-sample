@@ -81,14 +81,14 @@ export default function Tooltip({
 function getArrowWrapperClass(position: TooltipPosition): string {
   switch (position) {
     case 'bottom-left':
-      return 'absolute -bottom-[6px] left-3';
+      return 'absolute -bottom-[6px] left-7';
     case 'bottom-center':
       return 'absolute -bottom-[6px] left-1/2 -translate-x-1/2';
     case 'bottom-right':
       return 'absolute -bottom-[6px] right-3';
 
     case 'top-left':
-      return 'absolute -top-[6px] left-3 rotate-180';
+      return 'absolute -top-[6px] left-7 rotate-180';
     case 'top-center':
       return 'absolute -top-[6px] left-1/2 -translate-x-1/2 rotate-180';
     case 'top-right':
