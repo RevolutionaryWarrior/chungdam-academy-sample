@@ -1,5 +1,6 @@
 import Check from '@icons/check.svg?react';
 import Key from '@icons/key.svg?react';
+import StrokeColor from '@icons/stroke-color.svg?react';
 import Stroke from '@icons/stroke.svg?react';
 
 type Props = {
@@ -57,7 +58,16 @@ export default function LockButton({
         </div>
       </div>
       <p className={`${variant.text} text-[28px] font-[500]`}>{title}</p>
-      {isCompleted && <Stroke width={12} height={12} />}
+      {isCompleted && !isActive && (
+        <div className="animate-fade-in">
+          <Stroke width={12} height={12} />
+        </div>
+      )}
+      {isActive && (
+        <div className="animate-fade-in">
+          <StrokeColor width={12} height={12} />
+        </div>
+      )}
     </button>
   );
 }

@@ -1,6 +1,6 @@
 import { LockButton, MissionContents, Tooltip } from '@/components';
 import { useCompletedWordsStore } from '@/store';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SynonymsSelector from './SynonymsSelecter';
 
 type WordsType = 'sadness' | 'despair' | 'despondency' | 'misery';
@@ -58,16 +58,11 @@ export default function Synonyms({
   const [openAnswer, setOpenAnswer] = useState<boolean>(false);
   const canShowMissionContents = completedWords.length === 0;
 
-  useEffect(() => {
-    setOpenAnswer(completedWords.length > 0);
-  }, [completedWords]);
-
   const handleLockButtonClick = () => {
     if (isCompleted) {
       setOpenAnswer(!openAnswer);
-    } else {
-      onClick();
     }
+    onClick();
   };
   const synonymWords = Object.keys(DATA.synonyms.degree);
 
@@ -91,6 +86,7 @@ export default function Synonyms({
           bgColor="#ffffff"
           isVisible={openAnswer}
           className="absolute top-33 left-25"
+          disableOutsideClick
         >
           <SynonymsSelector
             selected={selected}
