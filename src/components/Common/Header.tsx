@@ -21,12 +21,14 @@ export default function Header({ title, max = 2 }: Props) {
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-2 rounded-[99px] border border-[#E1E2E5] bg-[#F7F8FA] px-3 py-1 text-[18px] text-[#4B4B4D]">
             Unit 1
-            <ChevronRightIcon width={20} height={20} />
+            <ChevronRightIcon className="size-5 fill-[#D7D8DB]" />
             Activity {progress} of {max}
           </span>
         </div>
 
-        <h1 className="text-[24px] font-semibold text-[#313233]">{title}</h1>
+        <h1 className="absolute left-1/2 -translate-x-1/2 text-2xl font-semibold text-[#313233]">
+          {title}
+        </h1>
 
         <button
           type="button"

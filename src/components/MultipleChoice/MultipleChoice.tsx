@@ -1,7 +1,9 @@
 import { useProgressStore } from '@/store';
+import ChevronRightIcon from '@icons/chevron-right.svg?react';
 
 const DATA = {
-  question: 'Q. 빈칸에 들어갈 가장 적절한 단어 쌍을 고르세요.',
+  questionNumber: 'Q5',
+  question: '빈칸에 들어갈 가장 적절한 단어 쌍을 고르세요.',
   innerContents: [
     'While simple',
     'an be a normal reaction to loss, clinical',
@@ -29,9 +31,14 @@ export default function MultipleChoice() {
           boxShadow: '0 4px 40px 0 rgba(199, 135, 166, 0.18)',
         }}
       >
-        <p className="text-[24px] leading-[36px] font-[600] text-[#313233]">
-          {DATA.question}
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="rounded-[20px] bg-[#0B2626] px-3 py-1.5 text-[20px] leading-[20px] font-[600] text-[#E5F2F2]">
+            {DATA.questionNumber}
+          </p>
+          <p className="text-[24px] leading-[36px] font-[600] text-[#313233]">
+            {DATA.question}
+          </p>
+        </div>
         <div className="mt-[26px] flex max-w-[800px] flex-wrap items-center gap-[6px] rounded-[20px] bg-[#F0F0F2] px-10 py-4">
           {DATA.innerContents.map((item, index) => (
             <>
@@ -71,9 +78,10 @@ export default function MultipleChoice() {
       </div>
       <button
         onClick={onClickNext}
-        className="my-3 mt-7 w-[223px] cursor-pointer rounded-[20px] bg-[#08191A] px-5 py-3 text-[20px] font-[500] text-[#DDF0F0] transition-all duration-300 hover:scale-105 hover:bg-[#0A1F20] hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
+        className="mt-7 flex w-[223px] cursor-pointer items-center justify-center gap-1 rounded-[20px] bg-[#24B3B1] px-5 py-3 text-[20px] font-[500] text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
       >
         <span>Next</span>
+        <ChevronRightIcon className="relative bottom-[1px] size-6 fill-white" />
       </button>
     </div>
   );
