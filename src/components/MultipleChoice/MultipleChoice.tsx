@@ -1,9 +1,6 @@
 import { useProgressStore } from '@/store';
-<<<<<<< Updated upstream
 import ChevronRightIcon from '@icons/chevron-right.svg?react';
-=======
 import { useState } from 'react';
->>>>>>> Stashed changes
 
 const DATA = {
   questionNumber: 'Q5',
