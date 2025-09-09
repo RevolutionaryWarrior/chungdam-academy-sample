@@ -1,4 +1,9 @@
 import { LockButton, MissionContents, Tooltip } from '@/components';
+import { useCompletedWordsStore } from '@/store';
+import { useEffect, useState } from 'react';
+import SynonymsSelector from './SynonymsSelecter';
+
+type Emotion = 'sadness' | 'despair' | 'despondency' | 'misery';
 
 const DATA = {
   synonyms: {
@@ -43,6 +48,28 @@ export default function Synonyms({
   onClick,
   onSubmitAnswer,
 }: Props) {
+  const completedWords = useCompletedWordsStore(
+    (state) => state.completedWords,
+  );
+
+  const [selected, setSelected] = useState<
+    'sadness' | 'despair' | 'despondency' | 'misery' | null
+  >(null);
+  const [openAnswer, setOpenAnswer] = useState<boolean>(false);
+  const canShowMissionContents = completedWords.length === 0;
+
+  useEffect(() => {
+    setOpenAnswer(completedWords.length > 0);
+  }, [completedWords]);
+
+  const handleLockButtonClick = () => {
+    if (isCompleted) {
+      setOpenAnswer(!openAnswer);
+    } else {
+      onClick();
+    }
+  };
+
   return (
     <div className="absolute -top-40 -left-120 flex w-100 flex-col items-center gap-3">
       <Tooltip position="bottom-center" isVisible={showTooltip}>
@@ -53,10 +80,27 @@ export default function Synonyms({
         isCompleted={isCompleted}
         isActive={isActive}
         title="Synonyms"
-        onClick={onClick}
+        onClick={handleLockButtonClick}
       />
 
-      {isActive && (
+      {/* 단어 선택 보기 */}
+      {openAnswer && (
+        <Tooltip
+          position="top-left"
+          bgColor="#ffffff"
+          isVisible={openAnswer}
+          className="absolute top-33 left-25"
+        >
+          <SynonymsSelector
+            selected={selected ?? 'despair'}
+            onSelect={(word: Emotion) => setSelected(word)}
+            degree={DATA.synonyms.degree}
+          />
+        </Tooltip>
+      )}
+
+      {/* 문제 보기 */}
+      {isActive && canShowMissionContents && (
         <Tooltip position="top-center" bgColor="#ffffff" isVisible={true}>
           <MissionContents
             question={DATA.synonyms.mission.qustion}
