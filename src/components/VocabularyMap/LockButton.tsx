@@ -1,5 +1,6 @@
 import Check from '@icons/check.svg?react';
 import Key from '@icons/key.svg?react';
+import Stroke from '@icons/stroke.svg?react';
 
 type Props = {
   isCompleted: boolean;
@@ -14,8 +15,8 @@ const buttonVariants = Object.freeze({
     text: 'text-[#666]',
   }),
   active: Object.freeze({
-    box: 'bg-[#E5F2F2] border-[2px] border-[#99D1D0]',
-    text: 'text-[#00807E]',
+    box: 'bg-[#DDF0F0] border-[2px] border-[#7DD1D1]',
+    text: 'text-[#008B8C]',
   }),
   completed: Object.freeze({
     box: 'bg-white border-[2px] border-[#FFCCE4] ',
@@ -56,6 +57,7 @@ export default function LockButton({
         </div>
       </div>
       <p className={`${variant.text} text-[28px] font-[500]`}>{title}</p>
+      {isCompleted && <Stroke width={12} height={12} />}
     </button>
   );
 }
