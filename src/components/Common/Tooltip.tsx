@@ -40,6 +40,8 @@ export default function Tooltip({
 
   const paddingClass = isPrimary ? 'px-[10px] py-[6px]' : 'px-6 py-5';
 
+  const animationClass = isPrimary && shouldShow ? 'animate-bounce-gentle' : '';
+
   return (
     <div
       ref={ref}
@@ -48,7 +50,7 @@ export default function Tooltip({
       } ${className}`}
     >
       <div
-        className={`relative ${paddingClass}`}
+        className={`relative ${paddingClass} ${animationClass}`}
         style={{
           backgroundColor: bgColor,
           borderRadius,
