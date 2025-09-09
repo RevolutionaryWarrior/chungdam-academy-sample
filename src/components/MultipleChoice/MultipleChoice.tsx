@@ -51,19 +51,22 @@ export default function MultipleChoice() {
           ))}
         </div>
         <ul className="mt-[30px] flex flex-col gap-3">
-          {DATA.choice.map((item, index) => (
-            <li
-              key={`choice-${index}`}
-              className="flex cursor-pointer items-center gap-2.5 rounded-[20px] border border-[#E1E2E5] p-3 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
-            >
-              <p className="rounded-[12px] bg-[#F0F0F2] px-3 py-[7px] text-[18px] font-[600] text-[#4B4B4D]">
-                a
-              </p>
-              <p className="text-[18px] leading-[27px] text-[#4B4B4D]">
-                {item}
-              </p>
-            </li>
-          ))}
+          {DATA.choice.map((item, index) => {
+            const letter = String.fromCharCode(97 + index); // a, b, c, d...
+            return (
+              <li
+                key={`choice-${index}`}
+                className="flex cursor-pointer items-center gap-2.5 rounded-[20px] border border-[#E1E2E5] p-3 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95"
+              >
+                <p className="rounded-[12px] bg-[#F0F0F2] px-3 py-[7px] text-[18px] font-[600] text-[#4B4B4D]">
+                  {letter}
+                </p>
+                <p className="text-[18px] leading-[27px] text-[#4B4B4D]">
+                  {item}
+                </p>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <button
