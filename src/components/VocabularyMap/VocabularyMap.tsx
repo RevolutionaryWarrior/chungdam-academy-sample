@@ -3,11 +3,11 @@ import { useCompletedWordsStore } from '@/store';
 import Vector from '@icons/vector.svg?react';
 import { useState } from 'react';
 
-const KEYWORDS = {
+const KEYWORDS = Object.freeze({
   SYNONYMS: 'synonyms',
   ANTONYMS: 'antonyms',
   WORD_PARTNERS: 'wordPartners',
-} as const;
+});
 
 type Turn = (typeof KEYWORDS)[keyof typeof KEYWORDS];
 
