@@ -39,25 +39,19 @@ export default function VocabularyMap() {
     setActive(null);
   };
 
-  const showTooltipForSynonyms = completedWords.length === 0 && !active;
-  const showTooltipForAntonyms = completedWords.length === 1 && !active;
-  const showTooltipForWordPartners = completedWords.length === 2 && !active;
-
   return (
     <div className="flex h-[100%] w-full items-center justify-center">
       <div className="relative">
         <Synonyms
           isCompleted={isCompleted(KEYWORDS.SYNONYMS)}
           isActive={active === KEYWORDS.SYNONYMS}
-          showTooltip={showTooltipForSynonyms}
           onClick={() => onClickButton(KEYWORDS.SYNONYMS)}
           onSubmitAnswer={onSubmitAnswer}
         />
 
         <Antonyms
           isCompleted={isCompleted(KEYWORDS.ANTONYMS)}
-          isActive={active === KEYWORDS.ANTONYMS && !showTooltipForAntonyms}
-          showTooltip={showTooltipForAntonyms}
+          isActive={active === KEYWORDS.ANTONYMS && completedWords.length === 1}
           onClick={() => onClickButton(KEYWORDS.ANTONYMS)}
           onSubmitAnswer={onSubmitAnswer}
         />
@@ -105,9 +99,8 @@ export default function VocabularyMap() {
         <WordPartners
           isCompleted={isCompleted(KEYWORDS.WORD_PARTNERS)}
           isActive={
-            active === KEYWORDS.WORD_PARTNERS && !showTooltipForWordPartners
+            active === KEYWORDS.WORD_PARTNERS && completedWords.length === 2
           }
-          showTooltip={showTooltipForWordPartners}
           onClick={() => onClickButton(KEYWORDS.WORD_PARTNERS)}
           onSubmitAnswer={onSubmitAnswer}
         />
