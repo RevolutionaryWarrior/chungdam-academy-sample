@@ -10,6 +10,15 @@ const KEYWORDS = {
 
 type Turn = (typeof KEYWORDS)[keyof typeof KEYWORDS];
 
+const LINE_ANIMATION_SETTING = {
+  top: '50%',
+  left: '50%',
+  width: '3px',
+  backgroundColor: '#ADAEB2',
+  transformOrigin: 'center top',
+  animation: 'drawLineDiagonal 0.8s ease-out forwards',
+};
+
 const WORD = 'depression';
 
 export default function VocabularyMap() {
@@ -50,6 +59,36 @@ export default function VocabularyMap() {
           onClick={() => onClickButton(KEYWORDS.ANTONYMS)}
           onSubmitAnswer={onSubmitAnswer}
         />
+
+        {completedWords.includes(KEYWORDS.SYNONYMS) && (
+          <div
+            className="absolute"
+            style={{
+              ...LINE_ANIMATION_SETTING,
+              transform: 'rotate(125deg) translate(30px, 100px)',
+            }}
+          />
+        )}
+
+        {completedWords.includes(KEYWORDS.ANTONYMS) && (
+          <div
+            className="absolute"
+            style={{
+              ...LINE_ANIMATION_SETTING,
+              transform: 'rotate(240deg) translate(10px, 170px)',
+            }}
+          />
+        )}
+
+        {completedWords.includes(KEYWORDS.WORD_PARTNERS) && (
+          <div
+            className="absolute"
+            style={{
+              ...LINE_ANIMATION_SETTING,
+              transform: 'rotate(55deg) translate(-30px, 100px)',
+            }}
+          />
+        )}
 
         <div className="relative h-[374px] w-[407px]">
           <Vector />
