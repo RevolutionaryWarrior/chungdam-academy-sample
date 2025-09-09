@@ -24,7 +24,7 @@ export default function MultipleChoice() {
   return (
     <div className="flex h-[100%] w-full flex-col items-center justify-center">
       <div
-        className="h-[726px] w-[1000px] rounded-[32px] px-[100px] pt-11"
+        className="max-h-[726px] w-[1000px] rounded-[32px] px-[100px] py-11"
         style={{
           boxShadow: '0 4px 40px 0 rgba(199, 135, 166, 0.18)',
         }}

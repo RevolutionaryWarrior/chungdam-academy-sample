@@ -3,38 +3,6 @@ import { useCompletedWordsStore } from '@/store';
 import Vector from '@icons/vector-1.svg?react';
 import { useState } from 'react';
 
-const Vector = () => (
-  <svg
-    width="407"
-    height="374"
-    viewBox="0 0 407 374"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M401.279 240.118C379.736 321.68 299.731 367.91 215.882 373.408C130.813 378.985 42.2956 345.311 10.9152 265.711C-20.5976 185.776 19.6502 98.8656 86.4553 45.1031C150.182 -6.18227 237.829 -15.892 307.335 27.1628C380.082 72.2255 423.193 157.151 401.279 240.118Z"
-      fill="url(#paint0_radial_2_860)"
-    />
-    <defs>
-      <radialGradient
-        id="paint0_radial_2_860"
-        cx="0"
-        cy="0"
-        r="1"
-        gradientTransform="matrix(246.022 -1.30465 1.26354 239.35 189.181 166.126)"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop offset="0.120192" stopColor="#FFCCE5" />
-        <stop offset="0.634615" stopColor="#FFA3CF" />
-        <stop offset="0.92513" stopColor="#F56CAE" />
-        <stop offset="1" stopColor="#F593C2" />
-      </radialGradient>
-    </defs>
-  </svg>
-);
-
 const KEYWORDS = Object.freeze({
   SYNONYMS: 'synonyms',
   ANTONYMS: 'antonyms',
