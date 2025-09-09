@@ -7,8 +7,8 @@ const DATA = {
   wordPartners: {
     mission: {
       qustion: '"depression"과 함께 쓰이는 단어는?',
-      choice: ['(a) deep', '(b) clinical'],
-      answer: '(b) clinical',
+      choice: ['deep', 'clinical'],
+      answer: 'clinical',
     },
     degree: {
       clinical: {
