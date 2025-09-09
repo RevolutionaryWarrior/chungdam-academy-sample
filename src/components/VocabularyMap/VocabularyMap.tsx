@@ -62,35 +62,38 @@ export default function VocabularyMap() {
           onSubmitAnswer={onSubmitAnswer}
         />
 
-        {completedWords.includes(KEYWORDS.SYNONYMS) && (
-          <div
-            className="absolute"
-            style={{
-              ...LINE_ANIMATION_SETTING,
-              transform: 'rotate(125deg) translate(30px, 100px)',
-            }}
-          />
-        )}
+        {completedWords.includes(KEYWORDS.SYNONYMS) &&
+          completedWords.length === 3 && (
+            <div
+              className="absolute"
+              style={{
+                ...LINE_ANIMATION_SETTING,
+                transform: 'rotate(125deg) translate(30px, 100px)',
+              }}
+            />
+          )}
 
-        {completedWords.includes(KEYWORDS.ANTONYMS) && (
-          <div
-            className="absolute"
-            style={{
-              ...LINE_ANIMATION_SETTING,
-              transform: 'rotate(240deg) translate(10px, 170px)',
-            }}
-          />
-        )}
+        {completedWords.includes(KEYWORDS.ANTONYMS) &&
+          completedWords.length === 3 && (
+            <div
+              className="absolute"
+              style={{
+                ...LINE_ANIMATION_SETTING,
+                transform: 'rotate(240deg) translate(10px, 170px)',
+              }}
+            />
+          )}
 
-        {completedWords.includes(KEYWORDS.WORD_PARTNERS) && (
-          <div
-            className="absolute"
-            style={{
-              ...LINE_ANIMATION_SETTING,
-              transform: 'rotate(55deg) translate(-30px, 100px)',
-            }}
-          />
-        )}
+        {completedWords.includes(KEYWORDS.WORD_PARTNERS) &&
+          completedWords.length === 3 && (
+            <div
+              className="absolute"
+              style={{
+                ...LINE_ANIMATION_SETTING,
+                transform: 'rotate(55deg) translate(-30px, 100px)',
+              }}
+            />
+          )}
 
         <div className="relative h-[374px] w-[407px]">
           <Vector />
