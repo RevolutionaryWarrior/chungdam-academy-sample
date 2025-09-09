@@ -3,7 +3,7 @@ import { useCompletedWordsStore } from '@/store';
 import { useEffect, useState } from 'react';
 import SynonymsSelector from './SynonymsSelecter';
 
-type Emotion = 'sadness' | 'despair' | 'despondency' | 'misery';
+type WordsType = 'sadness' | 'despair' | 'despondency' | 'misery';
 
 const DATA = {
   synonyms: {
@@ -94,8 +94,9 @@ export default function Synonyms({
         >
           <SynonymsSelector
             selected={selected ?? 'despair'}
-            onSelect={(word: Emotion) => setSelected(word)}
+            onSelect={(word: WordsType) => setSelected(word)}
             degree={DATA.synonyms.degree}
+            isVisible={openAnswer}
           />
         </Tooltip>
       )}

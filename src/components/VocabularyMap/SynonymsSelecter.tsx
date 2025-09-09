@@ -16,6 +16,7 @@ interface Props {
   selected: WordsType;
   onSelect: (word: WordsType) => void;
   degree: DegreeData;
+  isVisible?: boolean;
 }
 
 const words: WordsType[] = ['sadness', 'despair', 'despondency', 'misery'];
@@ -24,8 +25,9 @@ export default function SynonymsSelector({
   selected,
   onSelect,
   degree,
+  isVisible = true,
 }: Props) {
-  const [openModal, setOpenModal] = useState<WordsType | null>(null);
+  const [openModal, setOpenModal] = useState<WordsType | null>(selected);
 
   const [tab, setTab] = useState<'commentary' | 'example'>('commentary');
 
@@ -56,7 +58,9 @@ export default function SynonymsSelector({
         <img
           src={indicator}
           alt="indicator"
-          className="absolute top-0 h-5 w-5 transition-all duration-300 ease-in-out"
+          className={`absolute top-0 h-5 w-5 ${
+            isVisible ? 'transition-[left] duration-300 ease-in-out' : ''
+          }`}
           style={{
             left: positionMap[selected],
             transform: 'translateX(-50%)',
@@ -82,13 +86,11 @@ export default function SynonymsSelector({
                 {word}
               </button>
 
-              {/* 모달 */}
               <Modal
                 isOpen={openModal === word}
                 className="absolute top-[80px] flex flex-col items-center gap-1"
               >
-                <p className="text-[16px] font-medium capitalize">{word}</p>
-                {/* 토글자리 */}
+                <p className="text-[24px] font-[500]">{word}</p>
                 <Toggle
                   options={[
                     { label: '뉘앙스 해설', value: 'commentary' },
@@ -97,8 +99,8 @@ export default function SynonymsSelector({
                   value={tab}
                   onChange={(v) => setTab(v as 'commentary' | 'example')}
                 />
-                <p className="mt-1 w-full text-[13px] text-gray-500 italic">
-                  {data.example}
+                <p className="w-full p-1 text-[14px] text-[#19191A]">
+                  {tab === 'commentary' ? data.commentary : data.example}
                 </p>
               </Modal>
             </div>
