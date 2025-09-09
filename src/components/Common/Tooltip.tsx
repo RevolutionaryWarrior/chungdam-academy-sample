@@ -1,5 +1,4 @@
-import { useDetectClose } from '@/hooks';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 
 type TooltipPosition =
   | 'top-left'
@@ -15,7 +14,6 @@ type Props = {
   bgColor?: string;
   isVisible?: boolean;
   className?: string;
-  disableOutsideClick?: boolean;
 };
 
 export default function Tooltip({
@@ -24,22 +22,10 @@ export default function Tooltip({
   bgColor = '#36B3B1',
   isVisible = true,
   className,
-  disableOutsideClick = false,
 }: Props) {
   const isPrimary = bgColor === '#36B3B1';
-  const { ref, isOpen, setIsOpen } = useDetectClose();
 
-  // 외부에서 전달된 isVisible 상태와 동기화
-  useEffect(() => {
-    setIsOpen(isVisible);
-  }, [isVisible, setIsOpen]);
-
-  // 흰색 배경일 때만 외부 클릭으로 닫히도록 설정 (disableOutsideClick이 true면 외부 클릭 무시)
-  const shouldShow = isPrimary
-    ? isVisible
-    : disableOutsideClick
-      ? isVisible
-      : isOpen;
+  const shouldShow = isVisible;
 
   const borderRadius = isPrimary ? '8px' : '24px';
   const textColor = isPrimary ? 'white' : 'black';
@@ -50,7 +36,6 @@ export default function Tooltip({
 
   return (
     <div
-      ref={ref}
       className={`inline-flex h-auto w-auto transition-opacity duration-300 ${
         shouldShow ? 'visible' : 'invisible'
       } ${className}`}

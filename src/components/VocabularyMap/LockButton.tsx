@@ -12,7 +12,7 @@ type Props = {
 
 const buttonVariants = Object.freeze({
   locked: Object.freeze({
-    box: 'bg-[#E6E7EB]',
+    box: 'bg-[#E6E7EB] border-[2px] border-[#E6E7EB]',
     text: 'text-[#666]',
   }),
   active: Object.freeze({
