@@ -23,6 +23,10 @@ const LINE_ANIMATION_SETTING = {
   animation: 'drawLineDiagonal 0.8s ease-out forwards',
 };
 
+const CIRCLE_ANIMATION_STYLE = {
+  animation: 'circleRotate 4s linear infinite',
+};
+
 const WORD = 'depression';
 
 export default function VocabularyMap() {
@@ -43,95 +47,111 @@ export default function VocabularyMap() {
   };
 
   return (
-    <div className="flex h-[100%] w-full items-center justify-center">
-      <div className="relative">
-        <Synonyms
-          isCompleted={isCompleted(KEYWORDS.SYNONYMS)}
-          isActive={active === KEYWORDS.SYNONYMS}
-          onClick={() => onClickButton(KEYWORDS.SYNONYMS)}
-          onSubmitAnswer={onSubmitAnswer}
-        />
-
-        <Antonyms
-          isCompleted={isCompleted(KEYWORDS.ANTONYMS)}
-          isActive={active === KEYWORDS.ANTONYMS && completedWords.length === 1}
-          onClick={() => onClickButton(KEYWORDS.ANTONYMS)}
-          onSubmitAnswer={onSubmitAnswer}
-        />
-
-        {completedWords.includes(KEYWORDS.SYNONYMS) &&
-          completedWords.length === 3 && (
-            <div
-              className="absolute"
-              style={{
-                ...LINE_ANIMATION_SETTING,
-                transform: 'rotate(125deg) translate(30px, 100px)',
-              }}
-            />
-          )}
-
-        {completedWords.includes(KEYWORDS.ANTONYMS) &&
-          completedWords.length === 3 && (
-            <div
-              className="absolute"
-              style={{
-                ...LINE_ANIMATION_SETTING,
-                transform: 'rotate(240deg) translate(10px, 170px)',
-              }}
-            />
-          )}
-
-        {completedWords.includes(KEYWORDS.WORD_PARTNERS) &&
-          completedWords.length === 3 && (
-            <div
-              className="absolute"
-              style={{
-                ...LINE_ANIMATION_SETTING,
-                transform: 'rotate(55deg) translate(-30px, 100px)',
-              }}
-            />
-          )}
-
-        <div className="relative h-[374px] w-[407px] rounded-full bg-white">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ animation: 'spin 4s linear infinite' }}
-          >
-            <Circle1 />
-          </div>
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ animation: 'spin 4s linear infinite' }}
-          >
-            <Circle2 />
-          </div>
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ animation: 'spin 4s linear infinite' }}
-          >
-            <Circle3 />
-          </div>
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ animation: 'spin 4s linear infinite' }}
-          >
-            <Circle4 />
-          </div>
-
-          <p className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-[44px] font-[800] text-[#000]">
-            {WORD}
-          </p>
-        </div>
-
-        <WordPartners
-          isCompleted={isCompleted(KEYWORDS.WORD_PARTNERS)}
-          isActive={
-            active === KEYWORDS.WORD_PARTNERS && completedWords.length === 2
+    <>
+      <style>
+        {`
+          @keyframes circleRotate {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
           }
-          onClick={() => onClickButton(KEYWORDS.WORD_PARTNERS)}
-          onSubmitAnswer={onSubmitAnswer}
-        />
+        `}
+      </style>
+      <div className="flex h-[100%] w-full items-center justify-center">
+        <div className="relative">
+          <Synonyms
+            isCompleted={isCompleted(KEYWORDS.SYNONYMS)}
+            isActive={active === KEYWORDS.SYNONYMS}
+            onClick={() => onClickButton(KEYWORDS.SYNONYMS)}
+            onSubmitAnswer={onSubmitAnswer}
+          />
+
+          <Antonyms
+            isCompleted={isCompleted(KEYWORDS.ANTONYMS)}
+            isActive={
+              active === KEYWORDS.ANTONYMS && completedWords.length === 1
+            }
+            onClick={() => onClickButton(KEYWORDS.ANTONYMS)}
+            onSubmitAnswer={onSubmitAnswer}
+          />
+
+          {completedWords.includes(KEYWORDS.SYNONYMS) &&
+            completedWords.length === 3 && (
+              <div
+                className="absolute"
+                style={{
+                  ...LINE_ANIMATION_SETTING,
+                  transform: 'rotate(125deg) translate(30px, 100px)',
+                }}
+              />
+            )}
+
+          {completedWords.includes(KEYWORDS.ANTONYMS) &&
+            completedWords.length === 3 && (
+              <div
+                className="absolute"
+                style={{
+                  ...LINE_ANIMATION_SETTING,
+                  transform: 'rotate(240deg) translate(10px, 170px)',
+                }}
+              />
+            )}
+
+          {completedWords.includes(KEYWORDS.WORD_PARTNERS) &&
+            completedWords.length === 3 && (
+              <div
+                className="absolute"
+                style={{
+                  ...LINE_ANIMATION_SETTING,
+                  transform: 'rotate(55deg) translate(-30px, 100px)',
+                }}
+              />
+            )}
+
+          <div className="relative h-[374px] w-[407px] rounded-full bg-white">
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              style={CIRCLE_ANIMATION_STYLE}
+            >
+              <Circle1 />
+            </div>
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              style={CIRCLE_ANIMATION_STYLE}
+            >
+              <Circle2 />
+            </div>
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              style={CIRCLE_ANIMATION_STYLE}
+            >
+              <Circle3 />
+            </div>
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              style={CIRCLE_ANIMATION_STYLE}
+            >
+              <Circle4 />
+            </div>
+
+            <p className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-[44px] font-[800] text-[#000]">
+              {WORD}
+            </p>
+          </div>
+
+          <WordPartners
+            isCompleted={isCompleted(KEYWORDS.WORD_PARTNERS)}
+            isActive={
+              active === KEYWORDS.WORD_PARTNERS && completedWords.length === 2
+            }
+            onClick={() => onClickButton(KEYWORDS.WORD_PARTNERS)}
+            onSubmitAnswer={onSubmitAnswer}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
