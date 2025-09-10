@@ -16,7 +16,7 @@ export default function Header({ title, max = 2 }: Props) {
   };
 
   return (
-    <header className="w-full">
+    <header className="w-full bg-[#fff]">
       <div className="flex items-center justify-between gap-3 px-10 py-3">
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-2 rounded-[99px] border border-[#E1E2E5] bg-[#F7F8FA] px-3 py-1 text-[18px] text-[#4B4B4D]">
