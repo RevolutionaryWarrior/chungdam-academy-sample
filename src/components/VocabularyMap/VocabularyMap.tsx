@@ -92,7 +92,7 @@ export default function VocabularyMap() {
             />
           )}
 
-        <div className="relative h-[374px] w-[407px]">
+        <div className="relative h-[374px] w-[407px] rounded-full bg-white">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{ animation: 'spin 4s linear infinite' }}
@@ -117,6 +117,7 @@ export default function VocabularyMap() {
           >
             <Circle4 />
           </div>
+
           <p className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-[44px] font-[800] text-[#000]">
             {WORD}
           </p>
