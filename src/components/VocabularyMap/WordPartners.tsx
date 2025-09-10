@@ -57,7 +57,7 @@ export default function WordPartners({
   }, [isActive, canShowMissionContents, setIsMissionOpen]);
 
   return (
-    <div className="absolute -bottom-30 -left-120 z-10 flex w-100 flex-col items-center gap-3">
+    <div className="absolute -bottom-24 -left-96 z-10 flex w-100 flex-col items-center gap-3">
       <Tooltip
         position="bottom-center"
         isVisible={completedWords.length === 2 && !isMissionOpen}

@@ -81,7 +81,7 @@ export default function Synonyms({
   const synonymWords = Object.keys(DATA.synonyms.degree);
 
   return (
-    <div className="absolute -top-40 -left-120 z-10 flex w-100 flex-col items-center gap-3">
+    <div className="absolute -top-32 -left-96 z-10 flex w-100 flex-col items-center gap-3">
       <Tooltip
         position="bottom-center"
         isVisible={completedWords.length === 0 && !isMissionOpen}
@@ -119,7 +119,7 @@ export default function Synonyms({
           {synonymWords.map((word, index) => {
             const lineConfigs = [
               {
-                transform: 'rotate(170deg) translate(-10px, 80px)',
+                transform: 'rotate(170deg) translate(-10px, 70px)',
                 length: '90px',
               },
               {

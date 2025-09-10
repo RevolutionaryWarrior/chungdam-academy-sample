@@ -60,8 +60,8 @@ export default function VocabularyMap() {
           }
         `}
       </style>
-      <div className="flex h-[100%] w-full items-center justify-center">
-        <div className="relative">
+      <div className="flex h-[100vh] w-full items-center justify-center overflow-hidden">
+        <div className="relative scale-75 transform">
           <Synonyms
             isCompleted={isCompleted(KEYWORDS.SYNONYMS)}
             isActive={active === KEYWORDS.SYNONYMS}
@@ -84,7 +84,7 @@ export default function VocabularyMap() {
                 className="absolute"
                 style={{
                   ...LINE_ANIMATION_SETTING,
-                  transform: 'rotate(125deg) translate(30px, 100px)',
+                  transform: 'rotate(125deg) translate(30px, 10px)',
                 }}
               />
             )}
@@ -95,7 +95,7 @@ export default function VocabularyMap() {
                 className="absolute"
                 style={{
                   ...LINE_ANIMATION_SETTING,
-                  transform: 'rotate(240deg) translate(10px, 170px)',
+                  transform: 'rotate(240deg) translate(10px, 10px)',
                 }}
               />
             )}
@@ -106,7 +106,7 @@ export default function VocabularyMap() {
                 className="absolute"
                 style={{
                   ...LINE_ANIMATION_SETTING,
-                  transform: 'rotate(55deg) translate(-30px, 100px)',
+                  transform: 'rotate(55deg) translate(-30px, 10px)',
                 }}
               />
             )}
