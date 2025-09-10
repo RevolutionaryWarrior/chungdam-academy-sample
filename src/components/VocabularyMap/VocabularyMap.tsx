@@ -61,7 +61,7 @@ export default function VocabularyMap() {
         `}
       </style>
       <div className="flex h-[100vh] w-full items-center justify-center overflow-hidden">
-        <div className="relative scale-80 transform">
+        <div className="relative -translate-y-[50px] scale-80 transform">
           <Synonyms
             isCompleted={isCompleted(KEYWORDS.SYNONYMS)}
             isActive={active === KEYWORDS.SYNONYMS}
