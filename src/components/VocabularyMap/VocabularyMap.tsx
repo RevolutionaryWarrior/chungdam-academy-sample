@@ -1,6 +1,9 @@
 import { Antonyms, Synonyms, WordPartners } from '@/components';
 import { useCompletedWordsStore } from '@/store';
-import Vector from '@icons/vector-1.svg?react';
+import Circle1 from '@icons/subtract-1.svg?react';
+import Circle2 from '@icons/subtract-2.svg?react';
+import Circle3 from '@icons/subtract-3.svg?react';
+import Circle4 from '@icons/subtract-4.svg?react';
 import { useState } from 'react';
 
 const KEYWORDS = Object.freeze({
@@ -89,9 +92,33 @@ export default function VocabularyMap() {
             />
           )}
 
-        <div className="relative h-[374px] w-[407px]">
-          <Vector />
-          <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] font-[800] text-[#000]">
+        <div className="relative h-[374px] w-[407px] rounded-full bg-white">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ animation: 'spin 4s linear infinite' }}
+          >
+            <Circle1 />
+          </div>
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ animation: 'spin 4s linear infinite' }}
+          >
+            <Circle2 />
+          </div>
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ animation: 'spin 4s linear infinite' }}
+          >
+            <Circle3 />
+          </div>
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ animation: 'spin 4s linear infinite' }}
+          >
+            <Circle4 />
+          </div>
+
+          <p className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-[44px] font-[800] text-[#000]">
             {WORD}
           </p>
         </div>
