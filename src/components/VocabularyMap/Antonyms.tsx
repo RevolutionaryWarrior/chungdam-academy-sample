@@ -60,7 +60,7 @@ export default function Antonyms({
   }, [isActive, canShowMissionContents, setIsMissionOpen]);
 
   return (
-    <div className="absolute -top-40 -right-120 z-10 flex w-100 flex-col items-center gap-3">
+    <div className="absolute -top-32 -right-96 z-10 flex w-100 flex-col items-center gap-3">
       <Tooltip
         position="bottom-center"
         isVisible={completedWords.length === 1 && !isMissionOpen}
