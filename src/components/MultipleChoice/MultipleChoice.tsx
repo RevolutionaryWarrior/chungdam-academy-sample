@@ -86,7 +86,7 @@ export default function MultipleChoice() {
   };
 
   return (
-    <div className="mt-10 flex h-[100%] w-full flex-col items-center justify-start">
+    <div className="mt-10 flex h-[100%] w-full scale-95 flex-col items-center justify-start">
       <div
         className="max-h-[726px] w-[1000px] rounded-[32px] px-[100px] py-11"
         style={{
@@ -172,7 +172,7 @@ export default function MultipleChoice() {
       <button
         onClick={onClickNext}
         disabled={!activeChoice && !isSubmitted}
-        className={`mt-8 flex w-[223px] items-center justify-center gap-1 rounded-[20px] px-5 py-3 text-[20px] font-[500] text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95 ${
+        className={`mt-7 flex w-[223px] items-center justify-center gap-1 rounded-[20px] px-5 py-3 text-[20px] font-[500] text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#08191A]/20 active:scale-95 ${
           activeChoice || isSubmitted
             ? 'cursor-pointer bg-[#24B3B1]'
             : 'cursor-not-allowed bg-[#D7D8DB]'
